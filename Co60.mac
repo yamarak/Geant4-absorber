@@ -1,0 +1,33 @@
+# Macro file for example absorber
+# 
+# Can be run in batch, without graphic
+# or interactively: Idle> /control/execute run1.mac
+#
+# Change the default number of workers (in multi-threading mode) 
+#/run/numberOfThreads 4
+#
+# Initialize kernel
+/run/initialize
+#
+# Set a very high time threshold to allow all decays to happen
+/process/had/rdm/thresholdForVeryLongDecayTime 1.0e+60 year
+#
+/control/verbose 0
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+# 
+# Co-60
+#
+/gps/particle ion
+/gps/ion 27 60
+/gps/ene/mono 0 meV
+/gps/pos/centre 0 0 -20 mm
+#
+/analysis/setFileName Co60
+/analysis/h1/set 1  150  0. 1500 keV	#e+ e-
+/analysis/h1/set 2  150  0. 1500 keV	#neutrino
+/analysis/h1/set 3  150  0. 1500 keV	#gamma
+#
+/run/printProgress 100000  
+/run/beamOn 1000000
